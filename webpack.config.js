@@ -14,6 +14,14 @@ const rules = [
     exclude: /node_modules/,
     use: ['style-loader', 'css-loader'],
   },
+  {
+    test: /\.(png|jpe?g|gif)$/i,
+    use: [
+      {
+        loader: 'file-loader',
+      },
+    ],
+  },
 ]
 module.exports = {
   entry: path.join(__dirname, 'src', 'index.js'),

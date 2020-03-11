@@ -1,11 +1,11 @@
 {
-  "name": "react_boiler_plate",
+  "name": "StarWars",
   "version": "1.0.0",
-  "description": "A Quick Alternative to CRA",
+  "description": "A Project for star wars fans",
   "main": "index.js",
   "author": "Siradji Awoual",
   "license": "MIT",
-  "private": false,
+  "private": true,
   "scripts": {
     "start": "webpack-dev-server --history-api-fallback --mode development  --open --hot",
     "build": "webpack --mode production",
@@ -15,7 +15,9 @@
   "dependencies": {
     "@babel/polyfill": "^7.8.3",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2",
+    "styled-components": "^5.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
