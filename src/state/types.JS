@@ -1,0 +1,5 @@
+export const FILTER = 'FILTER'
+export const SORT = 'SORT'
+export const SEARCH = 'SEARCH'
+export const RESET = 'RESET'
+export const SET_TOPIC = 'SET_TOPIC'

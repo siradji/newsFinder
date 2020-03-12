@@ -1,26 +1,29 @@
 import React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import Styled from 'styled-components'
+import Title from './components/layout/Title'
+import Search from './components/layout/Search'
+import News from './components/news/News'
+import AppState from './state/AppState'
 
-// Importing core components
-import Navbar from './components/Navbar'
-
-// Importing Components for Routes
-import Character from './views/character/Character'
-import Home from './views/home/Home'
-import Dashboard from './views/dashboard/Dasboard'
 import './App.css'
 
 const App = () => (
   <>
-    <BrowserRouter>
-      <Navbar title="war" />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/people" component={Dashboard} />
-        <Route path="/people:peopleid" component={Character} />
-      </Switch>
-    </BrowserRouter>
+    <AppState>
+      <Wrapper>
+        <Title />
+        <Search />
+        <News />
+      </Wrapper>
+    </AppState>
   </>
 )
 
+const Wrapper = Styled.div`
+position: relative;
+margin: auto;
+max-width: 80%;
+overflow: hidden;
+
+`
 export default App
