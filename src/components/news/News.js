@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import React, { useContext } from 'react'
 import Styled from 'styled-components'
 import device from '../../utils/size'
@@ -23,6 +24,7 @@ const News = () => {
   })
 
   if (sortBy.length) {
+    // eslint-disable-next-line array-callback-return
     filtered.sort((a, b) => {
       switch (sortBy) {
         case 'title':

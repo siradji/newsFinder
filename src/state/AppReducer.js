@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import { SEARCH, FILTER, SORT, RESET, SET_TOPIC } from './types'
 
 export default (state, action) => {
