@@ -52,7 +52,7 @@ const News = () => {
   return (
     <Wrapper>
       {posts.length > 0 ? (
-        filtered.map(article => <NewsItem key={article.title} post={article} />)
+        filtered.map(article => <NewsItem key={article.url} post={article} />)
       ) : (
         <Alert />
       )}

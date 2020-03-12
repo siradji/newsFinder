@@ -26,7 +26,7 @@ const rules = [
 module.exports = {
   entry: path.join(__dirname, 'src', 'index.js'),
   output: {
-    path: path.resolve(__dirname, '/.build'),
+    path: path.join(__dirname, 'build'),
     filename: 'index.js',
   },
   devServer: {

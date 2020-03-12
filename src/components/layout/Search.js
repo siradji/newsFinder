@@ -35,6 +35,7 @@ const Search = () => {
     e.preventDefault()
     if (topic !== '') {
       fetchArticles(topic)
+      setTopic('')
     }
   }
 

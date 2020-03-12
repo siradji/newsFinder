@@ -23,6 +23,8 @@ export default (state, action) => {
       return {
         ...state,
         posts: [],
+        filterString: '',
+        sortBy: '',
       }
     case SET_TOPIC:
       return {
