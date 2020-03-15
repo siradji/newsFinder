@@ -3,19 +3,12 @@ import React, { useContext } from 'react'
 import Styled from 'styled-components'
 import device from '../../utils/size'
 import AppContext from '../../state/AppContext'
-
+import Spinner from '../layout/Spinner'
 import NewsItem from './NewsItem'
-
-const Alert = () => (
-  <div>
-    {' '}
-    <h1> Search for something...</h1>
-  </div>
-)
 
 const News = () => {
   const state = useContext(AppContext)
-  const { posts, filterString, sortBy } = state
+  const { posts, filterString, sortBy, loading } = state
 
   const filtered = posts.filter(({ title, description }) => {
     const titleString = title.toLowerCase()
@@ -49,18 +42,28 @@ const News = () => {
     })
   }
 
+  if (loading) {
+    return <Spinner />
+  }
   return (
-    <Wrapper>
-      {posts.length > 0 ? (
-        filtered.map(article => <NewsItem key={article.url} post={article} />)
-      ) : (
-        <Alert />
-      )}
-    </Wrapper>
+    <>
+      {posts.length ? (
+        <div style={{ marginTop: '20px' }}>
+          <Heading>
+            Showing <Span>{posts.length}</Span> articles
+          </Heading>
+        </div>
+      ) : null}
+      <GridWrapper>
+        {posts.length > 0
+          ? filtered.map(article => <NewsItem key={article.url} post={article} />)
+          : null}
+      </GridWrapper>
+    </>
   )
 }
 
-const Wrapper = Styled.div`
+const GridWrapper = Styled.div`
 margin-top: 50px;
 display:grid;
 grid-template-columns: 1fr;
@@ -69,7 +72,16 @@ grid-gap: 20px;
     grid-template-columns: 1fr 1fr 1fr ;
     grid-gap: 15px;
 }
-
 `
 
+const Span = Styled.span`
+font-weight: bold;
+font-size: 30px;
+margin: 0 2px;
+`
+
+const Heading = Styled.p`
+color: #E1F2FE;
+font-size: 20px;
+`
 export default News

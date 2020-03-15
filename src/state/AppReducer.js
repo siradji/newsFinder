@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-unresolved
-import { SEARCH, FILTER, SORT, RESET, SET_TOPIC } from './types'
+import { SEARCH, FILTER, SORT, RESET, SET_TOPIC, SET_LOADING } from './types'
 
 export default (state, action) => {
   switch (action.type) {
@@ -7,6 +7,7 @@ export default (state, action) => {
       return {
         ...state,
         posts: action.payload,
+        loading: false,
       }
 
     case FILTER:
@@ -32,6 +33,11 @@ export default (state, action) => {
         topic: action.payload,
       }
 
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: true,
+      }
     default:
       return state
   }

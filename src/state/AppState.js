@@ -6,7 +6,7 @@ import AppReducer from './AppReducer'
 
 // importing Types
 
-import { SEARCH, FILTER, SORT, RESET, SET_TOPIC } from './types.JS'
+import { SEARCH, FILTER, SORT, RESET, SET_TOPIC, SET_LOADING } from './types.JS'
 
 const AppState = props => {
   const initialState = {
@@ -14,11 +14,19 @@ const AppState = props => {
     filterString: '',
     sortBy: '',
     topic: '',
+    loading: false,
   }
 
   const [state, dispatch] = useReducer(AppReducer, initialState)
 
+  // set loading
+  const setLoading = () => {
+    dispatch({
+      type: SET_LOADING,
+    })
+  }
   const fetchArticles = async parameter => {
+    setLoading()
     const respones = await axios(
       `https://newsapi.org/v2/everything?q=${parameter}&apiKey=a5863a3ead424003805e8293c6068b4a`,
     )
@@ -50,9 +58,10 @@ const AppState = props => {
   const reset = () => {
     dispatch({ type: RESET })
   }
+
   const { children } = props
 
-  const { posts, filterString, sortBy, topic } = state
+  const { posts, loading, filterString, sortBy, topic } = state
 
   return (
     <AppContext.Provider
@@ -65,6 +74,7 @@ const AppState = props => {
         reset,
         getSortBy,
         topic,
+        loading,
       }}
     >
       {children}
