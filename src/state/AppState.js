@@ -6,7 +6,7 @@ import AppReducer from './AppReducer'
 
 // importing Types
 
-import { SEARCH, FILTER, SORT, RESET, SET_TOPIC, SET_LOADING } from './types.JS'
+import { SEARCH, FILTER, SORT, RESET, SET_TOPIC, SET_LOADING } from './types'
 
 const AppState = props => {
   const initialState = {
@@ -27,14 +27,15 @@ const AppState = props => {
   }
   const fetchArticles = async parameter => {
     setLoading()
-    const respones = await axios(
+    const response = await axios(
       `https://newsapi.org/v2/everything?q=${parameter}&apiKey=a5863a3ead424003805e8293c6068b4a`,
     )
 
     dispatch({
       type: SEARCH,
-      payload: respones.data.articles,
+      payload: response.data.articles,
     })
+    console.log(response.data)
     dispatch({
       type: SET_TOPIC,
       payload: parameter,

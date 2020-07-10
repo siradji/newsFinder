@@ -85,6 +85,7 @@ const Input = Styled.input`
 margin: ${props => (props.margin ? '20px 0' : '10px 0 ')} ;
 background: #1F3862;
 border-radius: 100px;
+outline: none;
 border: none;
 width: 100%;
 height: 48px;
@@ -101,6 +102,7 @@ padding: 0 20px;
 const Button = Styled.button`
 background: #F97618;
 border-radius: 5px;
+outline: none;
 width: 168px;
 height: 48px;
 border: none;

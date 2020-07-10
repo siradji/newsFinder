@@ -10,11 +10,6 @@ const rules = [
     },
   },
   {
-    test: /\.css$/,
-    exclude: /node_modules/,
-    use: ['style-loader', 'css-loader'],
-  },
-  {
     test: /\.(png|jpe?g|gif)$/i,
     use: [
       {
@@ -22,20 +17,33 @@ const rules = [
       },
     ],
   },
+  {
+    test: /\.css$/,
+    exclude: /node_modules/,
+    use: ['style-loader', 'css-loader'],
+  },
+  {
+    test: /\.html$/,
+    loader: 'html-loader',
+  },
 ]
 module.exports = {
   entry: path.join(__dirname, 'src', 'index.js'),
   output: {
-    path: path.join(__dirname, 'build'),
+    path: path.resolve(__dirname, 'build'),
     filename: 'index.js',
-  },
-  devServer: {
-    contentBase: './build',
+    publicPath: '/',
   },
   module: { rules },
   plugins: [
     new HTMLwebplugin({
-      template: './public/index.html',
+      template: path.join(__dirname, 'src', 'index.html'),
+      filename: 'index.html',
+      hash: true,
+      inject: true,
     }),
   ],
+  stats: {
+    children: false,
+  },
 }
